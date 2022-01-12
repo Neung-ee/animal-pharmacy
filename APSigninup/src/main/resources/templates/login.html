@@ -11,13 +11,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <!--배경설정style-->
 <style th:inline="text">
-	body { background : url([[@{/img/bg_login.png}]]) no-repeat;
-		   background-size : cover; }
+	body { background : url([[@{/img/bg_red.png}]]) no-repeat, #e84234; }
 </style>
 </head>
 <body>
 	<header>
-		<span class=title>동물약국🐶🐱🐹</span>
+		<a href="/"><span class=title>동물약국🐶🐱🐹</span></a>
 	</header>
 	
 	<div class=titleInfo>
@@ -28,15 +27,31 @@
 	</div>
 	
 	<div class=loginForm>
-		<form action="@{/doLogin}" method="post">
+	
+		<span th:if="${(param.error!=null) and (param.error[0] == 'true') and 
+				(param.exception[0]=='error100') }" role="alert">
+			아이디 또는 비밀번호가 일치하지 않습니다.
+		</span>
+		<span th:if="${(param.error!=null) and (param.error[0] == 'true') and 
+				(param.exception[0]=='error101') }" role="alert">
+			비활성화 된 계정입니다
+		</span>
+		<span th:if="${(param.error!=null) and (param.error[0] == 'true') and 
+				(param.exception[0]=='error102') }" role="alert">
+			알 수 없는 이유로 로그인을 실패했습니다.<br> 관리자에게 문의하세요
+		</span>
+	
+		<form th:action="@{/login}" method="post">
 			<label for="login_id">아이디</label><br>
 			<input type="text" name="username" id="login_id" placeholder="ID"><br>
 			
 			<label for="login_pw">비밀번호</label><br>
 			<input type="password" name="password" id="login_pw" placeholder="PASSWORD">
 			
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			
 			<br>
-			<a href="#" class="find_pw">비밀번호를 잊어버리셨나요?</a>
+			<a href="/findForm" class="find_pw">아이디/비밀번호 찾기</a>
 			<br>
 			
 			<button type="submit" class="btnLogin">로그인</button>

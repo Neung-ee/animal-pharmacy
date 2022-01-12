@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .title {
-	padding:26px; 
+	padding:5px 0px 5px 0px; 
 	font-size:45px; 
 	text-align:center;
 	background-color: #e84234;
@@ -11,6 +11,8 @@
 }
 	
 header { text-align:center; margin-top : 12px;}
+header > a { text-decoration:none !important; }
+header > a:hover { text-decoration:none !important }
 
 .titleInfo {
 	margin-top:50px;
@@ -24,11 +26,24 @@ header { text-align:center; margin-top : 12px;}
 .loginForm {
 	margin-top:50px;
 	display:flex;
-	justify-content:center;
+	flex-direction:column;
+	align-items:center;
+	
 }
 
 .loginForm form {
 	margin-left:-5%
+}
+
+.loginForm span[role=alert] {
+	text-align:center;
+	color:#f9ca46;
+	font-size:15px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:700;
+	margin-left:10px;
+	margin-bottom:10px;
+	margin-top:-45px;
 }
 
 .loginForm label {
@@ -66,9 +81,10 @@ header { text-align:center; margin-top : 12px;}
 .loginForm a {
 	color:white;
 	font-size:12px;
-	margin-left:70px;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-weight:300;
+	text-align:center;
+	margin-left:80px;
 }
 
 button {
@@ -81,6 +97,7 @@ button {
 	border-radius:3px;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-weight:500;
+	cursor:pointer;
 }
 
 button.btnLogin {
