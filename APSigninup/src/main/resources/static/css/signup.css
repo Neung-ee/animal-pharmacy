@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 header { text-align:center; margin-top : 12px;}
+header > a { text-decoration:none !important; }
+header > a:hover { text-decoration:none !important }
 
 .title {
 	padding:26px; 
@@ -15,7 +17,8 @@ header { text-align:center; margin-top : 12px;}
 .signupForm {
 	margin-top:50px;
 	display:flex;
-	justify-content:center;
+	flex-direction:column;
+	align-items:center;
 }
 
 .signupForm form {
@@ -69,6 +72,7 @@ button.btn_signup{
 	border-radius:3px;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-weight:500;
+	cursor:pointer;
 }
 
 p.error-message {
