@@ -3,6 +3,7 @@ package com.ap.consumer.vo;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.ap.consumer.validation.FieldMatch;
 
@@ -15,6 +16,7 @@ import lombok.Data;
 public class Member {
 	
 	@NotBlank(message = "아이디를 입력해주세요")
+	@Size(min = 5, max = 15, message = "5자~15자로 입력해주세요")
 	private String mb_id;
 	
 	@NotBlank(message = "비밀번호를 입력해주세요")
