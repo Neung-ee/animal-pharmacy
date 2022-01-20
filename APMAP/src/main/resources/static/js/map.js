@@ -18,7 +18,8 @@ if (navigator.geolocation) {
 		lon = position.coords.longitude; // 경도
         
         var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message = '<div style="padding:5px;">내 위치</div>'; // 인포윈도우에 표시될 내용입니다
+            //message = '<div style="padding:5px;font-family:"Noto Sans KR", sans-serif;">내 위치</div>'; // 인포윈도우에 표시될 내용입니다
+			message ='<div id="div11">내 위치</div>';
         
         // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition, message);
@@ -34,18 +35,19 @@ if (navigator.geolocation) {
 }
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-function displayMarker(locPosition, msg3) {
+function displayMarker(locPosition, message) {
 	
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
        position: locPosition
     });
-    
+    //var message ='<div id="div11">' + msg3 + '</div>';
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);
 
-	var iwContent = msg3, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	var iwContent = message, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	
 	iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
 	// 인포윈도우를 생성합니다
@@ -85,7 +87,7 @@ function setCenter(p1, p2) {
 }
 //a태그 클릭이벤트
 function aclick(p1, p2, msg) {
-
+	var message ='<div id="div11">' + msg + '</div>';
 	var locPosition = new kakao.maps.LatLng(p1, p2);
 	 // 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
@@ -96,7 +98,7 @@ function aclick(p1, p2, msg) {
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);      
 
-	var iwContent = msg, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	var iwContent = message, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
     iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
 	// 인포윈도우를 생성합니다
@@ -135,8 +137,8 @@ function mouseOver(p1, p2, msg) {
 	        position: locPosition
 	    }); 
 		markers.push(marker);
-		
-		var iwContent = msg; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		var message ='<div id="div11">' + msg + '</div>';
+		var iwContent = message; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 	
 		// 인포윈도우를 생성합니다
 		var infowindow = new kakao.maps.InfoWindow({
@@ -221,7 +223,7 @@ function ddd(a, a2){
 							+ '</div>'
 						+ '</div>';
 				msg4 = '<div id="div10"><a id="a10" href="/nextindex?nm=' + BIZPLC_NM + '">' + BIZPLC_NM + '</a>'
-					+ msg55 + '<div id="div9">리뷰' + total + '</div>'
+					+ msg55 + '<div id="div9">&nbsp리뷰' + total + '</div>'
 					+ '<div id="div7">' + ROADNM_ADDR + '</div><div id="div8">' + TELNO + '</div></div>';
 				
 				var locPosition = new kakao.maps.LatLng(lat, logt);
