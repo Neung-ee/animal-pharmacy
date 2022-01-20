@@ -39,7 +39,7 @@
 		<button type="button" id="sidebarCollapse">
 			<span><i class="fas fa-bars"></i></span>
 		</button>
-		<a href="/success"><span class=title>동물약국🐶🐱🐹</span></a>
+		<a href="/"><span class=title>동물약국🐶🐱🐹</span></a>
 	</header>
 	<!-- Sidebar  -->
     <nav id="sidebar">
@@ -70,8 +70,8 @@
 		    <form id="search_form" class="search_Form" th:action="@{/search}" method="get">
 		    	<div class="sigun_select">
 					<select name="si" class="select_bar">
-						<option value="시/군/구" selected>시/군/구
-						<option th:each="nm:${NM}" th:value="${nm}" th:text="${nm}">
+						<option value="시/군/구">시/군/구
+						<option th:each="nm:${NM}" th:selected="${nm == si}" th:text="${nm}">
 					</select>
 				</div><br>
 				<input type="text" id="search" 
