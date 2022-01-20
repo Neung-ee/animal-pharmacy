@@ -177,6 +177,8 @@ form {
 	font-size: 12pt;
 	color: #5E5E5E;
 	padding-left: 10px;
+		font-family: 'Noto Sans KR', sans-serif;
+	
 }
 
 .search_keyword {
@@ -187,6 +189,8 @@ form {
 	font-size: 12pt;
 	color: #5E5E5E;
 	padding-left: 10px;
+		font-family: 'Noto Sans KR', sans-serif;
+	
 }
 
 
@@ -202,6 +206,8 @@ form {
 	border-radius: 5px;
 	border: 0px;
 	font-size: 20px;
+		font-family: 'Noto Sans KR', sans-serif;
+	
 }
 
 
@@ -216,6 +222,8 @@ form {
     clear: both;
     overflow-x: hidden;
     overflow-y: auto;
+    	font-family: 'Noto Sans KR', sans-serif;
+    
 }
 
 #Allcnt {
@@ -248,6 +256,9 @@ form {
     background-color: #eef7ff;
 }
 
+.Winfo {
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
 #winfo {
 	 text-decoration-line : none;
