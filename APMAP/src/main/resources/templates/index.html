@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" style="overflow: auto;">
+<head>
+    <meta charset="utf-8">
+    <title>동물약국</title>
+</head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/map.css}">
+<body>
+	<div id="map"></div>
+	<div id="search">
+		<!-- <div id=div1 >동물약국🐶🐱🐹</div> -->
+		<form action="request" id="form1">
+			<select name="si" id="select1" >
+				<option th:value="${ss}" th:each="ss:${sisi}" th:text="${ss}"></option>
+			</select>
+			<input type="text" name="search" placeholder="내용을 입력해 주세요" id="input1">
+			<input type="submit" value="검색" id="input2">
+		</form>
+	</div>
+	<!--  -->
+	<div id="info">
+		<hr color="gray" size="2">
+		<div id="info1">
+			<div id="info4" th:onclick="setCenter([[${imsi.getREFINE_WGS84_LAT}]],[[${imsi.getREFINE_WGS84_LOGT}]])"
+				th:onmouseover="mouseOver([[${imsi.getREFINE_WGS84_LAT}]],[[${imsi.getREFINE_WGS84_LOGT}]], [[${imsi.getBIZPLC_NM}]])"
+		 	th:each="imsi:${boardList}" onmouseout="mouseOut()">
+				<a id="a1"
+				th:text="|${imsi.getBIZPLC_NM}|"
+				th:onclick="aclick([[${imsi.getREFINE_WGS84_LAT}]], [[${imsi.getREFINE_WGS84_LOGT}]], [[${imsi.getBIZPLC_NM}]])"></a>
+				<div id="div5" th:text="|${imsi.getREFINE_ROADNM_ADDR}|"></div>
+				<div id="div6" th:text="|${imsi.getLOCPLC_FACLT_TELNO}|"></div>
+				<hr color="gray" size="2">
+			</div>
+			<div id="info5">
+				<span aria-hidden="true" >
+					<a class="page-item" th:href="@{/request?si={si}&search={search}&page=1 (si = ${si}, search= ${search})}" aria-label="Previous">&lt;&lt;</a>
+					<!-- <a class="page-link" th:href="@{/request?si=&search=&page=1}" aria-label="Previous">처음</a> -->
+				</span>
+				<span aria-hidden="true" >
+					<a class="page-item" th:href="@{/request?si={si}&search={search}&page={page} (page = ${pagination.prevBlock}, si = ${si}, search= ${search})}" aria-label="Previous">&lt;</a>
+				</span>
+				<th:block th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
+					<span th:with="start = ${pagination.startPage}, end = ${pagination.endPage}" th:each="pageButton : ${#numbers.sequence(start, end)}">
+						<a th:class="${pageButton == pageNo} ? 'active'" th:href="@{/request?si={si}&search={search}&page={page} (page = ${pageButton} , si = ${si}, search= ${search} )}" th:text=${pageButton}></a>
+					</span>
+				</th:block>
+				<span aria-hidden="true" >
+					<a class="page-item" th:href="@{/request?si={si}&search={search}&page={page} (page = ${pagination.nextBlock}, si = ${si}, search= ${search})}" aria-label="Next">&gt;</a>
+				</span>
+				<span aria-hidden="true">
+					<a class="page-item" th:href="@{/request?si={si}&search={search}&page={page} (page = ${pagination.totalPageCnt}, si = ${si}, search= ${search})}" aria-label="Previous">&gt;&gt;</a>
+				</span>
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- 지도좌표 표시.. -->
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9e6a5e62e51639d306f4fa1f0e4bf38f"></script>
+	<script type="text/javascript" th:src="@{/js/map.js}"></script>
+	<script th:inline="javascript">
+		
+		var bl = '[[${boardList}]]'; //페이징 리스트.
+		var sc = '[[${sc}]]'; // 평점.
+	    var a = JSON.parse(bl);
+		var a2 = JSON.parse(sc);
+		ddd(a, a2);
+	</script>
+</body>
+</html>

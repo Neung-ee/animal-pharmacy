@@ -1,0 +1,184 @@
+@charset "UTF-8";
+/* 지도 프레임 */
+#map {
+	overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 407px;
+    right: 0;
+    z-index: 0;
+}
+/* 검색창 프레임 */
+#search {
+	margin : -8px;
+	position:relative;
+	width:408px;
+	height: 240px;
+	float: left;
+}
+/* 제목 */
+#div1{
+	text-align: center;
+	background-image: url('/img/mapBG.png');
+	height: 80px;
+	font-size: 24pt;
+	color: white;
+	font-weight:bold;
+	line-height: 75px;
+}
+/* 검색폼. */
+#form1 {
+	margin: 8px;
+	margin-top: 20px; 
+}
+/* 시군구 선택 */
+#select1 {
+	margin-top: 10px;
+	width: 390px;
+	height: 40px;
+	font-size: 12pt;
+	border-radius: 5px;
+}
+/* 검색어 입력창 */
+#input1 {
+	margin-top: 10px;
+	width: 320px;
+	height: 40px;
+	font-size: 12pt;
+	border-radius: 5px;
+	border-width: thin;
+}
+/* 검색버튼 */
+#input2 {
+	background-color: #3498DB;
+	border-color: #3498DB;
+	margin-top: 20px;
+	width: 53px;
+	height: 40px;
+	color: white;
+	border-radius: 5px;
+	font-size: 12;
+}
+/* 검색버튼 마우스오버 이벤트. */
+#input2:hover {
+	cursor: pointer;
+}
+/* 검색결과. */
+#info {
+    float: left;
+    position: relative;
+    width: 407px;
+    height: 710px;
+    overflow-x: hidden;
+	overflow-y: auto; 
+    clear: both;
+    margin-left: -8px;
+}
+#info1 {
+	position: relative;
+	height: 760px;
+	clear: both;
+}
+#info4 {
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 20px;
+}
+#info4 div{
+	margin-top: 10px;
+} 
+#info4:hover {
+	background-color: #eef7ff;
+}
+/*------------- 페이징 부분. */
+#info5 {
+	position: relative;
+	margin-top: 20px;
+	text-align: center;
+}
+#info5 a{
+	text-decoration:none;
+	color: black;
+	padding: 5px;
+}
+.active {
+	font-weight: bold;
+	border: 1px solid;
+	border-color: black;
+	border-radius: 4px;
+	
+}
+/* ------------------------ */
+
+#info2 {
+	margin:10px;
+	font-size: 10pt;
+}
+/* 리스트 */
+#a1 {
+	color: black;
+	text-decoration:none;
+	font-weight: bold;
+	font-size: 15pt;
+}
+#a1:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+#div5, #div6{
+	font-size: 11pt;
+}
+/* 별점 */
+.star-ratings {
+	color: #aaa9a9; 
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29;
+}
+ 
+.star-ratings-fill {
+  color: #fff58c;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
+/* 마커클릭 페이지. */
+#div10{
+	margin :10px;
+	width: 100%;
+}
+#div10 a{
+	font-size: 14px;
+	color : black;
+	text-decoration:none;
+	font-weight: bold;
+}
+#div10 a:hover{
+	text-decoration: underline;
+}
+#div9{
+	margin-left: 80px;
+	margin-top: -18px;
+	font-size : 10pt;
+}
+#div7{
+	margin-top : 5px;
+	font-size : 10pt;
+} 
+#div8{
+	font-size : 10pt;
+}
