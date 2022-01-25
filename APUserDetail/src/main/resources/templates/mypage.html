@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>동물약국🐶🐱🐹 > 마이페이지</title>
+<!--로컬CSS파일-->
+<link th:href="@{/css/mypage.css}" rel="stylesheet"/>
+<!--구글폰트API-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<!--배경설정style-->
+<style th:inline="text">
+	body { background : url([[@{/img/bg_green_small.png}]]) no-repeat, #85ac33; }
+</style>
 </head>
 <body>
-
+	<header>
+		<a href="/"><span class=title>동물약국🐶🐱🐹</span></a>
+	</header>
+	
+	<div class=titleInfo>
+		<span class="menu">내 정보 수정</span>
+	</div>
+	
+	<div class=mypageForm>
+		<form th:action="@{/}" method="post">
+			<label for="mb_id">아이디</label><br>
+			<input type="text" placeholder="ID" disabled><br>
+			
+			<label for="mb_pw">비밀번호</label><br>
+			<input type="password" placeholder="PASSWORD"><br>
+			
+			<label for="mb_pw_confirm">비밀번호 확인</label><br>
+			<input type="password" placeholder="PASSWORD CONFIRM"><br>
+			
+			<label for="mb_name">이름</label><br>
+			<input type="text" placeholder="NAME"><br>
+			
+			<label for="mb_email">이메일</label><br>
+			<input type="email" placeholder="EMAIL"><br>
+			
+			<button type="submit" class="btnInfoEdit">정보 수정</button>
+			<br>
+			<button type="button" onclick="location.href='/'" class="btnCancel">취소</button>
+		</form>
+		
+	</div>
 </body>
 </html>
