@@ -20,6 +20,9 @@ import lombok.AllArgsConstructor;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
+	/*TODO : JWT 토큰 인증에 대해 알아보기. msa로 할 경우 session이 아닌
+	 * 토큰에 사용자 정보를 저장해야한다고함.*/
+	
 	@Autowired
 	AuthFailureHandler authFailureHandler;
 	
@@ -40,8 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**");
 	}
 	
-	// TODO : failure핸들러 처리하기. 로그인 실패하면 alert 띄워주기.
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
