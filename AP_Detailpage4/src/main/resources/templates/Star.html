@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star</title>
+    <!-- 로컬css파일 -->
+<link rel="stylesheet" th:href="@{/css/style.css?after}">
+    <link th:href="@{/css/star.css}" rel="stylesheet"/>
+    <!--구글폰트API-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<!--FONTAWESOME5-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<!--배경설정style-->
+<style th:inline="text">
+	body { background : url([[@{/img/bg_green_small.png}]]) no-repeat; 
+		   background-size : cover; /* #85ac33; */ }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<!--메인을 누르면 지도로 돌아가야 함-->
+<header>
+	<a href="/"><span class=title>동물약국🐶🐱🐹</span></a>
+</header>
+
+<div class="mid">
+
+	<div class="mid1">
+		<table>
+        	<tr th:each="name:${getname2}">
+        		<td><span th:text="${name.BIZPLC_NM}"></span><br>
+        		<img id="location" th:src="@{/img/location.png}"/>
+				<span th:text="${name.REFINE_ROADNM_ADDR}"></span></td>
+			</tr> 
+		</table>
+	</div>
+	<div class="midavg">
+	       <div th:switch="${avg}" id="starR" style="color: transparent; text-shadow:0 0 0 rgb(230, 230, 0);">
+			<div th:case="5" th:text="'⭐⭐⭐⭐⭐'"></div>
+			<div th:case="4" th:text="'⭐⭐⭐⭐'"></div>
+			<div th:case="3" th:text="'⭐⭐⭐'"></div>
+			<div th:case="2" th:text="'⭐⭐'"></div>	
+			<div th:case="1" th:text="'⭐'"></div>
+	</div>
+	</div>
+
+	<br>
+		
+	<div class="mid2">
+
+		<form name="myform" id="myform" method="post" action="starupdate">
+    		<fieldset>
+        		<input type="radio" name="rating" value="5" id="rate1" required><label for="rate1">⭐</label>
+        		<input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
+        		<input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
+        		<input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
+        		<input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
+    		</fieldset>
+    	<input type="hidden" name="NM1" th:value="${pageMaker.REFINE_ROADNM_ADDR}">
+        
+        <br>
+    
+    	<input type="textbox" name="text" style="width:400px;height:100px" required>
+    	<br>
+    	<input type="submit" value="올리기" style="width:100px;">
+    	<br>
+		</form>
+	</div>
+	<hr>
+		<div class="vl" id="v_l"></div>
+	<div class="mid3">
+		<table>
+			<tr th:each="imsi:${getallinfo}">
+				<td><div th:switch="${imsi.rv_score}" id="starR" style="color: transparent;
+				text-shadow:0 0 0 rgb(230, 230, 0);">
+				<div th:case="5" th:text="'⭐⭐⭐⭐⭐'"></div>
+				<div th:case="4" th:text="'⭐⭐⭐⭐'"></div>
+				<div th:case="3" th:text="'⭐⭐⭐'"></div>
+				<div th:case="2" th:text="'⭐⭐'"></div>
+				<div th:case="1" th:text="'⭐'"></div>
+				</div></td>
+				<td>[[${imsi.rv_comment}]]</td>
+			</tr>
+		</table>
+		</div>
+
+	<div class="mid4">
+		<form id='actionForm' action="/" method="get"> 
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}"> 
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount}"> 
+		</form>
+
+		<script th:inline="javascript">
+		var actionForm = $('#actionForm'); $('.paginate_button a').on('click', function(e) { e.preventDefault();
+		actionForm.find('input[name="pageNum"]').val($(this).attr('href')); actionForm.submit(); });</script>
+
+		<div class="page navigation" th:if="${pageMaker.total!=0}"> 
+			<ul class="pagination">
+ 			<li th:if = "${pageMaker.prev}==true">
+ 			<!-- <li class="paginate_button prev"> -->
+   			<a th:href="@{${pageMaker.REFINE_ROADNM_ADDR}(page=${pageMaker.startPage - 1},PageNum=${pageMaker.startPage - 1})}">Prev</a>
+    		</li>
+    		<li th:each="num: ${#numbers.sequence(pageMaker.startPage,pageMaker.endPage)}" th:classappend="${pageMaker.cri.pageNum} == ${num} ? active : null" }>
+    		<a th:href="@{${pageMaker.REFINE_ROADNM_ADDR}(page=${num},pageNum=${num})}" th:text="${num}"></a>
+    		</li>
+    		<li th:if ="${pageMaker.next}==true and ${pageMaker.endPage > 0}">
+    		<!-- <li class="paginate_button next"> -->
+    		<a  th:href="@{${pageMaker.REFINE_ROADNM_ADDR}(page=${pageMaker.endPage + 1},PageNum=${pageMaker.endPage + 1})}">Next</a>
+    		</li> 
+    		</ul>
+		</div>
+	</div>
+</div>
+	
+<footer>
+	<!--   <p>Footer</p> -->
+</footer>
+	
+<!-- CDN : jQuery, Bootstrap&Javascript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="script_star_rating.js"></script>
+	
+</body>
+</html>

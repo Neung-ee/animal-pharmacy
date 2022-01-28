@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- 로컬css파일 -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<!--구글폰트API-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<!--FONTAWESOME5-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<!--배경설정style-->
+<style th:inline="text">
+	body { background : url([[@{/img/bg_green_small.png}]]) no-repeat; 
+		   background-size : cover; /* #85ac33; */ }
+</style>
+
+<title>DetailPage</title>
+</head>
+<body>
+	
+	<!--메인을 누르면 지도로 돌아가야 함-->
+	<header>
+		<a href="/"><span class=title>동물약국🐶🐱🐹</span></a>
+	</header>
+
+	<section id="mid">
+		<div class="mid1">
+			<div class="Content" id="AP_detail">
+				<div th:replace="Star :: ph_nm(${REFINE_ROADNM_ADDR})"></div><!-- <h1 th:text="${BIZPLC_NM}">약국이름</h1> -->
+				<img id="location" th:src="@{/img/location.png}"/>
+				<div class=ph_nm_>약국주소</div><br>
+			</div>
+			<br>
+			<div class="container" id="AP_WReview">
+				<h4>평점작성</h4>
+				<div class="RatingStar">
+					<!-- <div th:replace="Star :: Star_Rating"></div> -->
+				</div>
+			</div>
+		</div>
+	
+		<div class="vl" id="v_l"></div>
+	
+		<div class="mid2">
+			<div class="container" id="Reviews">
+				<!-- <div th:replace="Star :: Review_List"></div> -->
+			</div>
+		</div>
+
+	</section>
+
+	<footer>
+	<!--   <p>Footer</p> -->
+	</footer>
+
+
+
+<!-- CDN : jQuery, Bootstrap&Javascript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="script_star_rating.js"></script>
+
+</body>
+</html>

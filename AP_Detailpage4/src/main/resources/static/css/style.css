@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+.title {
+	padding:0px 10px 0px 10px;  
+	font-size:25px; 
+	text-align:center;
+	background-color: #85ac33;
+	font-weight:bold; 
+	font-family: 'Noto Sans KR', sans-serif;
+	color:white;
+	margin-left:25px;
+}
+	
+header { text-align:center; margin-top : 12px;}
+header > a { text-decoration:none !important; }
+header > a:hover { text-decoration:none !important }
+
+
+#AP_detail{
+	text-align: center;
+}
+
+.mid{
+    width: 90%;
+    max-width: 1240px;
+    height:90%;
+    margin: 10px 20px 20px 20px auto;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-gap:20px;
+}
+.mid1{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;
+	justify-content: center;
+  	align-items:center;
+}
+.midavg{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;	
+	justify-content: center;
+  	align-items:center;
+  	font-size:40px;
+}
+.mid2{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;	
+	justify-content: center;
+  	align-items:center;
+}
+.mid3{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;	
+	
+}
+.mid4{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;
+	justify-content: center;
+  align-items:center;	
+
+	
+}
+@media screen and (min-width:850px){
+	.mid{
+	grid-template-columns: 1fr 1fr;
+	    grid-template-rows:1fr 1fr 1fr 1fr;
+	    grid-gap:30px;
+	    column-gap:60px;
+	    margin: 10px auto;
+	    
+	}
+	.mid1{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;
+}
+.midavg{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;
+	grid-row:2/3;
+	font-size:60px;
+	justify-content: center;
+  align-items:center;
+}
+.mid2{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;
+	grid-row:3/5;	
+	justify-content: center;
+  	align-items:center;
+}
+.mid3{
+	display:flex;
+	min-height:30%;
+	min-width:1fr;	
+	grid-column:2/3;
+	grid-row:1/5;
+	align-items:start;
+	font-size:20px;
+	justify-content: center;
+}
+.mid4{
+	display:flex;
+	min-height:100%;
+	min-width:1fr;	
+	grid-column:2/3;
+	grid-row:4/5;
+	justify-content: center;
+}
+#v_l {
+  border-left: 3px solid black;
+  height: 80%;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 10%;
+  
+}
+.vl{
+    float: left;
+    margin-left: 5%;
+    width:30%;
+    box-sizing: border-box;
+}
+}
+
+
+
+
+
+
+.w_reivew{
+	resize: none;
+}
+.footer{
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
