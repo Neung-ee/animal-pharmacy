@@ -22,7 +22,7 @@ header > a:hover { text-decoration:none !important }
 
 .mid{
     width: 90%;
-    max-width: 1240px;
+    max-width: 2000px;
     height:90%;
     margin: 10px 20px 20px 20px auto;
     display:grid;
